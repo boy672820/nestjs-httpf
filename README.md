@@ -307,7 +307,7 @@ export class AppModule {}
 
 #### FxTS Methods and Helper Functions
 
-See the [FxTS documentation](https://fxts.dev/docs/index) for more information.
+See the [FxTS documentation](https://fxts.dev/api) for more information.
 
 ## License
 
