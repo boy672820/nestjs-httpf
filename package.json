@@ -1,6 +1,6 @@
 {
   "name": "nestjs-httpf",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "keywords": [
     "nestjs",
     "http",
@@ -83,5 +83,9 @@
   },
   "dependencies": {
     "got": "^11.8.6"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/boy672820/nestjs-httpf"
   }
 }
