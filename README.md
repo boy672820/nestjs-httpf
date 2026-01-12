@@ -307,7 +307,28 @@ See the [FxTS documentation](https://fxts.dev/api) for more information.
 
 ## License
 
-[MIT](LICENSE)
+This project is licensed under the [MIT License](LICENSE).
+
+### Third-Party Licenses
+
+This project uses the following third-party libraries:
+
+| Library                                          | License    |
+| ------------------------------------------------ | ---------- |
+| [@fxts/core](https://github.com/marpple/FxTS)    | Apache-2.0 |
+| [got](https://github.com/sindresorhus/got)       | MIT        |
+| [@nestjs/common](https://github.com/nestjs/nest) | MIT        |
+
+#### Apache-2.0 License Notice
+
+This project depends on `@fxts/core` which is licensed under the Apache License 2.0. When using this library, you must comply with the Apache-2.0 license terms for `@fxts/core`, which include:
+
+- **Attribution**: You must give appropriate credit and include a copy of the Apache-2.0 license
+- **State Changes**: If you modify `@fxts/core`, you must state the changes made
+- **NOTICE Preservation**: If `@fxts/core` includes a NOTICE file, you must include it in your distribution
+- **Patent Grant**: Apache-2.0 includes an express grant of patent rights from contributors
+
+For the full Apache-2.0 license text, see: https://www.apache.org/licenses/LICENSE-2.0
 
 ## Contributing
 
