@@ -1,6 +1,7 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { HttpfModule, HttpfService } from '../../lib';
 import * as nock from 'nock';
+import { pluck } from '@fxts/core';
 
 describe('HTTP', () => {
   let moduleRef: TestingModule;
@@ -30,9 +31,8 @@ describe('HTTP', () => {
 
       const body = await httpfService
         .get<{ message: string }>(`${baseUrl}/hello`)
-        .map((response) => response.body)
+        .chain(pluck('body'))
         .head();
-
       expect(body).toEqual({ message: 'Hello World!' });
     });
   });
@@ -47,9 +47,8 @@ describe('HTTP', () => {
         .post<{ message: string }>(`${baseUrl}/echo`, {
           json: { message: 'Hello Echo!' },
         })
-        .map((response) => response.body)
+        .chain(pluck('body'))
         .head();
-
       expect(body).toEqual({ message: 'Hello Echo!' });
     });
   });
@@ -64,9 +63,8 @@ describe('HTTP', () => {
         .put<{ message: string }>(`${baseUrl}/echo`, {
           json: { message: 'Hello Put Echo!' },
         })
-        .map((response) => response.body)
+        .chain(pluck('body'))
         .head();
-
       expect(body).toEqual({ message: 'Hello Put Echo!' });
     });
   });
@@ -81,9 +79,8 @@ describe('HTTP', () => {
         .patch<{ message: string }>(`${baseUrl}/echo`, {
           json: { message: 'Hello Patch Echo!' },
         })
-        .map((response) => response.body)
+        .chain(pluck('body'))
         .head();
-
       expect(body).toEqual({ message: 'Hello Patch Echo!' });
     });
   });
@@ -98,7 +95,7 @@ describe('HTTP', () => {
         .delete<{ message: string }>(`${baseUrl}/echo`, {
           json: { message: 'Hello Delete Echo!' },
         })
-        .map((response) => response.body)
+        .chain(pluck('body'))
         .head();
 
       expect(body).toEqual({ message: 'Hello Delete Echo!' });
@@ -111,7 +108,7 @@ describe('HTTP', () => {
 
       const statusCode = await httpfService
         .head<void>(`${baseUrl}/echo`)
-        .map((response) => response.statusCode)
+        .chain(pluck('statusCode'))
         .head();
 
       expect(statusCode).toBe(200);

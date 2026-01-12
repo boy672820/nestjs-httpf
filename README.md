@@ -70,7 +70,7 @@ export class UserService {
   async getUser(id: string) {
     const user = await this.httpfService
       .get<User>(`https://api.example.com/users/${id}`)
-      .map((response) => response.body)
+      .chain(pluck('body'))
       .head();
 
     return user;
@@ -86,7 +86,7 @@ export class UserService {
 // GET request
 const data = await this.httpfService
   .get<{ message: string }>('https://api.example.com/hello')
-  .map((response) => response.body)
+  .chain(pluck('body'))
   .head();
 
 // POST request
@@ -94,25 +94,21 @@ const result = await this.httpfService
   .post<{ id: string }>('https://api.example.com/users', {
     json: { name: 'John', email: 'john@example.com' },
   })
-  .map((response) => response.body)
+  .chain(pluck('body'))
   .head();
 
 // PUT request
-await this.httpfService
-  .put('https://api.example.com/users/123', {
-    json: { name: 'Jane' },
-  })
-  .head();
+await this.httpfService.put('https://api.example.com/users/123', {
+  json: { name: 'Jane' },
+});
 
 // PATCH request
-await this.httpfService
-  .patch('https://api.example.com/users/123', {
-    json: { email: 'jane@example.com' },
-  })
-  .head();
+await this.httpfService.patch('https://api.example.com/users/123', {
+  json: { email: 'jane@example.com' },
+});
 
 // DELETE request
-await this.httpfService.delete('https://api.example.com/users/123').head();
+await this.httpfService.delete('https://api.example.com/users/123');
 ```
 
 ### Error Handling

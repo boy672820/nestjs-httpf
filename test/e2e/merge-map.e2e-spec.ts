@@ -1,6 +1,7 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { HttpfModule, HttpfService } from '../../lib';
 import * as nock from 'nock';
+import { pluck } from '@fxts/core';
 
 describe('Merge Map', () => {
   let moduleRef: TestingModule;
@@ -36,7 +37,7 @@ describe('Merge Map', () => {
       const body = await httpfService
         .get<Array<{ id: number; name: string }>>(`${baseUrl}/items`)
         .mergeMap((response) => response.body)
-        .map((item) => item.name)
+        .chain(pluck('name'))
         .toArray();
 
       expect(body).toEqual(['Item 1', 'Item 2']);
